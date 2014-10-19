@@ -40,6 +40,6 @@ public class AI
 {
     public void zug(int id, Spiel.Zustand zustand, Spiel.Zug zug) 
     {
-         
+         System.out.println("test");
     }
 }
