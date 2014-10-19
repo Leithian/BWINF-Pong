@@ -38,8 +38,23 @@
  */
 public class AI 
 {
-    public void zug(int id, Spiel.Zustand zustand, Spiel.Zug zug) 
-    {
-         System.out.println("test");
-    }
+	int counter;
+	Spiel.Zustand.Schlaeger ai, enemy;
+	Spiel.Zustand.Ball ball;
+	
+	public void zug(int id, Spiel.Zustand zustand, Spiel.Zug zug) 
+	{
+		if(counter == 0) getObjects(id, zustand);
+		counter++;
+		zug.nachOben();
+	}
+	
+	public void getObjects(int id, Spiel.Zustand zustand)
+	{
+		Spiel.Zustand.Schlaeger ai1 = zustand.listeSchlaeger().get(0);
+		Spiel.Zustand.Schlaeger ai2 = zustand.listeSchlaeger().get(1);
+		ai = ai1.identifikation() == id ? ai1 : ai2;
+		enemy = ai2.identifikation() == id ? ai1 : ai2;
+		ball = zustand.listeBall().get(0);
+	}
 }
